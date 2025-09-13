@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Get Well Soon, My Love</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Dancing+Script:wght@700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            font-family: 'Inter', sans-serif;
+            overflow: hidden;
+            background: linear-gradient(-45deg, #fce7f3, #fbcfe8, #f9a8d4, #f472b6);
+            background-size: 400% 400%;
+            animation: gradientBG 15s ease infinite;
+            perspective: 1000px;
+        }
+
+        @keyframes gradientBG {
+            0% { background-position: 0% 50%; }
+            50% { background-position: 100% 50%; }
+            100% { background-position: 0% 50%; }
+        }
+
+        .font-dancing-script {
+            font-family: 'Dancing Script', cursive;
+        }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            transform: rotate(-45deg);
+            animation: float 15s infinite linear;
+            z-index: 0;
+            pointer-events: none;
+        }
+        .heart::before,
+        .heart::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background: rgba(255, 255, 255, 0.7);
+            border-radius: 50%;
+        }
+        .heart::before { top: -10px; left: 0; }
+        .heart::after { top: 0; left: 10px; }
+
+        @keyframes float {
+            0% { transform: translateY(110vh) rotate(-45deg) scale(1); opacity: 1; }
+            100% { transform: translateY(-10vh) rotate(-45deg) scale(1.5); opacity: 0; }
+        }
+
+        .letter-reveal {
+            display: inline-block;
+            opacity: 0;
+            transform: translateY(-30px) scale(0.8);
+            animation: reveal 0.6s cubic-bezier(0.215, 0.610, 0.355, 1.000) forwards;
+        }
+        
+        #main-heading {
+             animation: text-glow 2.5s ease-in-out infinite;
+        }
+
+        @keyframes reveal {
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+        
+        @keyframes text-glow {
+            0%, 100% { text-shadow: 0 0 8px #fff, 0 0 16px #f9a8d4, 0 0 24px #f472b6; }
+            50% { text-shadow: 0 0 16px #fff, 0 0 24px #f9a8d4, 0 0 32px #f472b6; }
+        }
+
+        .card, .fade-in-item {
+            opacity: 0;
+            animation: fadeIn 1.5s ease-out forwards;
+        }
+        .fade-in-item.delay-1 { animation-delay: 1.5s; }
+        .fade-in-item.delay-2 { animation-delay: 2.0s; }
+        .fade-in-item.delay-3 { animation-delay: 2.5s; }
+        .fade-in-item.delay-4 { animation-delay: 3.0s; }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .divider-grow {
+            transform: scaleX(0);
+            transform-origin: center;
+            animation: grow 1s ease-out 1s forwards;
+        }
+
+        @keyframes grow { to { transform: scaleX(1); } }
+        
+        .pulse-love {
+            animation: pulse 2.5s infinite ease-in-out;
+        }
+        @keyframes pulse {
+            0%, 100% { transform: scale(1); }
+            50% { transform: scale(1.05); }
+        }
+        
+        .button-container {
+            opacity: 0;
+            animation: bounceIn 1s ease-out 3.5s forwards;
+        }
+        @keyframes bounceIn {
+            0% { opacity: 0; transform: scale(0.5); }
+            60% { opacity: 1; transform: scale(1.1); }
+            80% { transform: scale(0.95); }
+            100% { opacity: 1; transform: scale(1); }
+        }
+        
+        .sparkle {
+            position: absolute;
+            width: 3px;
+            height: 3px;
+            background: #ffffff;
+            border-radius: 50%;
+            box-shadow: 0 0 5px #fff, 0 0 10px #fff;
+            animation: sparkle-anim 3s infinite linear;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        @keyframes sparkle-anim {
+            0% { opacity: 0; transform: scale(0.5); }
+            50% { opacity: 1; transform: scale(1.2); }
+            100% { opacity: 0; transform: scale(0.5); }
+        }
+        
+        .card {
+            transition: transform 0.1s ease-out;
+            transform-style: preserve-3d;
+        }
+
+    </style>
+</head>
+<body class="flex items-center justify-center min-h-screen p-4">
+
+    <div id="hearts-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+
+    <div class="card relative bg-white/70 backdrop-blur-md rounded-2xl shadow-2xl p-6 sm:p-8 md:p-12 max-w-2xl w-full text-center z-10">
+        <h1 id="main-heading" class="font-dancing-script text-5xl md:text-7xl text-rose-500 mb-4 h-20 md:h-28 flex items-center justify-center flex-wrap">
+        </h1>
+        <div class="w-24 h-1 bg-rose-300 mx-auto rounded-full mb-8 divider-grow"></div>
+        <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-6 fade-in-item delay-1">
+            My dearest Yuki, hearing that you're unwell has left my world a little less bright. Please know that I'm thinking of you every single moment and sending all my love and strength your way.
+        </p>
+        <p class="text-gray-700 text-lg md:text-xl leading-relaxed mb-6 fade-in-item delay-2">
+            You are the strongest and most wonderful person I know. Your beautiful smile is missed more than words can say. Focus on resting and getting better. I can't wait to see you healthy, happy, and back in my arms again.
+        </p>
+        <p class="text-gray-700 text-lg md:text-xl leading-relaxed font-semibold mb-10 fade-in-item delay-3">
+            Sending you endless hugs and kisses.
+        </p>
+        <div class="font-dancing-script text-4xl text-rose-400 mb-8 fade-in-item delay-4 pulse-love">
+            With all my love,
+        </div>
+        <div class="button-container">
+            <button id="more-love-btn" class="bg-rose-500 text-white font-bold py-3 px-6 rounded-full hover:bg-rose-600 transition-all duration-300 transform hover:scale-105 active:scale-100 shadow-lg">
+                Send More Love ❤️
+            </button>
+        </div>
+    </div>
+
+    <script>
+        const heartsContainer = document.getElementById('hearts-container');
+        const moreLoveBtn = document.getElementById('more-love-btn');
+        const heading = document.getElementById('main-heading');
+        const card = document.querySelector('.card');
+        const headingText = "Get Well Soon,Yuki";
+
+        headingText.split('').forEach((char, index) => {
+            const span = document.createElement('span');
+            span.textContent = char;
+            span.className = 'letter-reveal';
+            span.style.animationDelay = `${index * 0.05}s`;
+            if (char === ' ') {
+                span.style.width = '0.5em';
+            }
+            heading.appendChild(span);
+        });
+
+        function createHearts(count) {
+            for (let i = 0; i < count; i++) {
+                const heart = document.createElement('div');
+                heart.className = 'heart';
+                heart.style.left = `${Math.random() * 100}vw`;
+                heart.style.animationDuration = `${Math.random() * 10 + 10}s`;
+                heart.style.animationDelay = `${Math.random() * 5}s`;
+                heart.style.transform = `scale(${Math.random() * 0.5 + 0.5})`;
+                heart.addEventListener('animationend', () => heart.remove());
+                heartsContainer.appendChild(heart);
+            }
+        }
+        
+        function createSparkles(count) {
+            for (let i = 0; i < count; i++) {
+                const sparkle = document.createElement('div');
+                sparkle.className = 'sparkle';
+                sparkle.style.top = `${Math.random() * 100}%`;
+                sparkle.style.left = `${Math.random() * 100}%`;
+                sparkle.style.animationDuration = `${Math.random() * 2 + 2}s`;
+                sparkle.style.animationDelay = `${Math.random() * 3}s`;
+                sparkle.addEventListener('animationend', () => sparkle.remove());
+                heartsContainer.appendChild(sparkle);
+            }
+        }
+
+        window.onload = () => {
+            const isMobile = window.innerWidth < 768;
+            const heartCount = isMobile ? 15 : 25;
+            const sparkleCount = isMobile ? 20 : 30;
+            createHearts(heartCount);
+            createSparkles(sparkleCount);
+        };
+        
+        moreLoveBtn.addEventListener('click', () => {
+            const isMobile = window.innerWidth < 768;
+            const heartCount = isMobile ? 10 : 20;
+            createHearts(heartCount);
+        });
+        
+        function handleTilt() {
+            const isTouchDevice = () => 'ontouchstart' in window || navigator.maxTouchPoints > 0;
+
+            if (!isTouchDevice()) {
+                document.body.addEventListener('mousemove', (e) => {
+                    const { clientX, clientY } = e;
+                    const { innerWidth, innerHeight } = window;
+                    const xRotation = (clientY / innerHeight - 0.5) * -15;
+                    const yRotation = (clientX / innerWidth - 0.5) * 15;
+                    card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.03)`;
+                });
+
+                document.body.addEventListener('mouseleave', () => {
+                    card.style.transform = `rotateX(0deg) rotateY(0deg) scale(1)`;
+                });
+            } else {
+                window.addEventListener('deviceorientation', (e) => {
+                    const { beta, gamma } = e;
+
+                    if (beta === null || gamma === null) return;
+                    
+                    const maxTilt = 10;
+                    const xRotation = Math.max(-maxTilt, Math.min(maxTilt, beta - 45));
+                    const yRotation = Math.max(-maxTilt, Math.min(maxTilt, gamma));
+
+                    card.style.transform = `rotateX(${xRotation}deg) rotateY(${yRotation}deg) scale(1.03)`;
+                }, true);
+            }
+        }
+
+        handleTilt();
+
+    </script>
+</body>
+</html>
+
